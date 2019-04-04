@@ -8,9 +8,9 @@
     class Scene : SKScene
     {
         /** The width of the scene. */
-        static let WIDTH  :Int = 800
+        var width    :Int
         /** The height of the scene. */
-        static let HEIGHT :Int = 600
+        var height   :Int
 
         /** The SpriteKit view reference. */
         var skView   :SKView
@@ -22,12 +22,16 @@
         /**
             Creates the custom camera, adds it to the scene and assigns it to the SpriteKitScene.
         */
-        override init()
+        init( width: CGFloat, height: CGFloat )
         {
+            // clip scene dimensions to level dimensions
+            self.width  = min( Int( width  ), Level.WIDTH  )
+            self.height = min( Int( height ), Level.HEIGHT )
+
             skView = SKView()
             skCamera = SKCameraNode()
 
-            super.init( size: ( CGSize( width: Scene.WIDTH, height: Scene.HEIGHT ) ) )
+            super.init( size: ( CGSize( width: self.width, height: self.height ) ) )
 
             skView.frame = self.frame
             skView.presentScene( self )
@@ -47,7 +51,7 @@
         */
         required convenience init?( coder decoder: NSCoder )
         {
-            self.init()
+            self.init( width: 0, height: 0 )
         }
 
         /**

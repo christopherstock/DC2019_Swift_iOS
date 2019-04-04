@@ -167,12 +167,13 @@
             This is a specimen for Techncial Debt. The method adds functionality
             at the cost of a very brittleness implementation.
 
+            - parameter scene:  The game scene.
             - parameter camera: The SpriteKit camera to get the current position from.
         */
-        func applyParallaxScrolling( camera: SKCameraNode ) -> Void
+        func applyParallaxScrolling( scene: Scene, camera: SKCameraNode ) -> Void
         {
             var cameraX        = camera.position.x
-            let halfSceneWidth = CGFloat( Scene.WIDTH / 2 )
+            let halfSceneWidth = CGFloat( scene.width / 2 )
 
             if ( cameraX < halfSceneWidth )
             {

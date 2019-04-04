@@ -21,7 +21,10 @@
         */
         init( appendTo viewHost: UIView )
         {
-            scene     = Scene()
+            scene = Scene(
+                width:  viewHost.frame.width,
+                height: viewHost.frame.height
+            )
             keySystem = KeySystem()
             level     = Level( scene: scene )
 
@@ -40,6 +43,7 @@
         {
             view.addSubview( scene.skView )
             view.frame.size = scene.skView.frame.size
+            view.backgroundColor = UIColor.black
         }
     }
 
@@ -57,6 +61,6 @@
 
             scene.moveCameraTo( target: level.getPlayerPosition() );
 
-            level.applyParallaxScrolling( camera: scene.camera! )
+            level.applyParallaxScrolling( scene: scene, camera: scene.camera! )
         }
     }
