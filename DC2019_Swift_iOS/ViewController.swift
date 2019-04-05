@@ -14,7 +14,7 @@
         }
 
         /**
-         *  Being invoked from the system when a touch operation has started.
+            Being invoked from the system when a touch operation has started.
          */
         override func touchesBegan( _ touches: Set<UITouch>, with event: UIEvent? )
         {
@@ -28,7 +28,7 @@
         }
 
         /**
-         *  Being invoked from the system when a touch operation has ended.
+            Being invoked from the system when a touch operation has ended.
          */
         override func touchesMoved( _ touches: Set<UITouch>, with event: UIEvent? )
         {
@@ -42,7 +42,7 @@
         }
 
         /**
-         *  Being invoked from the system when a touch operation is moving.
+            Being invoked from the system when a touch operation is moving.
          */
         override func touchesEnded( _ touches: Set<UITouch>, with event: UIEvent? )
         {
@@ -56,7 +56,7 @@
         }
 
         /**
-         *  Being invoked from the system when a touch operation is cancelled.
+            Being invoked from the system when a touch operation is cancelled.
          */
         override func touchesCancelled( _ touches: Set<UITouch>, with event: UIEvent? )
         {

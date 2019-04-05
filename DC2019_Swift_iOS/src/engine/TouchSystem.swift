@@ -18,7 +18,7 @@
         private var lastTouchLocation :CGPoint?
 
         /**
-         *  Creates a new instance of the touch system.
+            Creates a new instance of the touch system.
          */
         init()
         {
@@ -28,9 +28,9 @@
         }
 
         /**
-         *  Being invoked when the touch is down.
-         *
-         *  @param point The point where the touch went down.
+            Being invoked when the touch is down.
+
+            - parameter point: The point where the touch went down.
          */
         func onTouchDown( point:CGPoint ) -> Void
         {
@@ -41,9 +41,9 @@
         }
 
         /**
-         *  Being invoked when the touch is up.
-         *
-         *  @param point The point where the touch went up.
+            Being invoked when the touch is up.
+
+            - parameter point: The point where the touch went up.
          */
         func onTouchUp( point:CGPoint ) -> Void
         {
@@ -54,9 +54,9 @@
         }
 
         /**
-         *  Being invoked when the touch is moved.
-         *
-         *  @param point The point where the touch moved to.
+            Being invoked when the touch is moved.
+
+            - parameter point: The point where the touch moved to.
          */
         func onTouchMove( point:CGPoint ) -> Void
         {
