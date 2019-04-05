@@ -7,71 +7,75 @@
     */
     class TouchSystem
     {
-        /** Flags the 'pressed' state for all keyCodes. */
-//        var pressed :[UInt16:Bool] = [:]
+        /** Indicates swipe left. */
+        var swipedLeft  :Bool
+        /** Indicates swipe right. */
+        var swipedRight :Bool
+        /** Indicates a click. */
+        var didClick    :Bool
+
+        /** Stores the last touch location point. */
+        private var lastTouchLocation :CGPoint?
 
         /**
-            Creates a new key system by adding event monitoring for key up and down events.
-        */
+         *  Creates a new instance of the touch system.
+         */
         init()
         {
-/*
-            UIEvent.addLocalMonitorForEvents( matching: . )
-            {
-                self.onKeyDown( event: $0 )
-
-                // returning 'nil' indicates the event as handled
-                return nil
-            }
-
-            UIEvent.addLocalMonitorForEvents( matching: .keyUp )
-            {
-                self.onKeyUp( event: $0 )
-
-                // returning 'nil' indicates the event as handled
-                return nil
-            }
-*/
+            swipedLeft  = false
+            swipedRight = false
+            didClick    = false
         }
 
         /**
-            Determines if a key is currently pressed.
-
-            - parameter keyCode: The keyCode to determine pressed behaviour for.
-
-            - return: *true* if the key with the queried keyCode is currently pressed. Otherwise *false*.
-        */
-/*
-        func isPressed( keyCode:KeyCode ) -> Bool
+         *  Being invoked when the touch is down.
+         *
+         *  @param point The point where the touch went down.
+         */
+        func onTouchDown( point:CGPoint ) -> Void
         {
-            if let pressed = pressed[ keyCode.rawValue ]
+            lastTouchLocation = point
+            swipedLeft        = false
+            swipedRight       = false
+            didClick          = false
+        }
+
+        /**
+         *  Being invoked when the touch is up.
+         *
+         *  @param point The point where the touch went up.
+         */
+        func onTouchUp( point:CGPoint ) -> Void
+        {
+            lastTouchLocation = nil
+            swipedLeft        = false
+            swipedRight       = false
+            didClick          = true
+        }
+
+        /**
+         *  Being invoked when the touch is moved.
+         *
+         *  @param point The point where the touch moved to.
+         */
+        func onTouchMove( point:CGPoint ) -> Void
+        {
+            swipedLeft  = false
+            swipedRight = false
+            didClick    = false
+
+            if let location = lastTouchLocation
             {
-                return pressed
+                if ( point.x < location.x )
+                {
+                    swipedLeft = true
+                }
+                else if ( point.x > location.x )
+                {
+                    swipedRight = true
+                }
             }
 
-            return false
+            lastTouchLocation = point
         }
-*/
-        /**
-            Being invoked when a key is pressed.
-
-            - parameter event: The event object that contains all information about the key down event.
-        */
-/*
-        private func onKeyDown( event:UIEvent ) -> Void
-        {
-//            pressed[ event.keyCode ] = true
-        }
-*/
-        /**
-            Being invoked when a key is released.
-
-            - parameter event: The event object that contains all information about the key up event.
-        */
-/*
-        private func onKeyUp( event:UIEvent ) -> Void
-        {
-//            pressed[ event.keyCode ] = false
-        }
-*/
     }

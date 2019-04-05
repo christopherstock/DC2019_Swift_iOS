@@ -48,7 +48,7 @@
         */
         func render( touchSystem: TouchSystem ) -> Void
         {
-            handleKeys( touchSystem: touchSystem )
+            handleTouch( touchSystem: touchSystem )
 
             checkMovement()
             checkJump()
@@ -83,14 +83,17 @@
 
          - parameter touchSystem: The app's touch system that determines currently performed touches.
         */
-        func handleKeys( touchSystem: TouchSystem ) -> Void
+        func handleTouch( touchSystem: TouchSystem ) -> Void
         {
-/*
-            moveLeft  = ( keySystem.isPressed( keyCode: KeyCode.LEFT  ) )
-            moveRight = ( keySystem.isPressed( keyCode: KeyCode.RIGHT ) )
-            doJump    = ( keySystem.isPressed( keyCode: KeyCode.UP    ) )
-*/
-    }
+            moveLeft  = ( touchSystem.swipedLeft  )
+            moveRight = ( touchSystem.swipedRight )
+
+            if ( touchSystem.didClick )
+            {
+                doJump = true
+                touchSystem.didClick = false
+            }
+        }
 
         /**
             Checks and handles horizontal player movement.
@@ -120,6 +123,7 @@
         {
             if ( doJump  && isVerticalResting() )
             {
+                doJump = false
                 node.physicsBody?.velocity.dy = Player.JUMP_VELOCITY
             }
         }
