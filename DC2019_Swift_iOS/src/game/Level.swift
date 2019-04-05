@@ -134,12 +134,12 @@
         /**
             Renders one game loop cycle for the level.
 
-            - parameter keySystem: The app's key system to determine currently pressed keys.
+            - parameter touchSystem: The app's touch system that determines currently performed touches.
         */
-        func render( keySystem: KeySystem ) -> Void
+        func render( touchSystem: TouchSystem ) -> Void
         {
             // render the player
-            player.render( keySystem: keySystem )
+            player.render( touchSystem: touchSystem )
 
             // rotate all items
             for item in items

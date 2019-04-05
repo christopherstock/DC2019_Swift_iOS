@@ -43,10 +43,12 @@
 
         /**
             Renders one iteration of the game loop for the player.
+
+            - parameter touchSystem: The app's touch system that determines currently performed touches.
         */
-        func render( keySystem: KeySystem ) -> Void
+        func render( touchSystem: TouchSystem ) -> Void
         {
-            handleKeys( keySystem: keySystem )
+            handleKeys( touchSystem: touchSystem )
 
             checkMovement()
             checkJump()
@@ -79,14 +81,16 @@
         /**
             Handles the player's keys for this game loop iteration.
 
-            - parameter keySystem: The key system to query user key interaction.
+         - parameter touchSystem: The app's touch system that determines currently performed touches.
         */
-        func handleKeys( keySystem: KeySystem ) -> Void
+        func handleKeys( touchSystem: TouchSystem ) -> Void
         {
+/*
             moveLeft  = ( keySystem.isPressed( keyCode: KeyCode.LEFT  ) )
             moveRight = ( keySystem.isPressed( keyCode: KeyCode.RIGHT ) )
             doJump    = ( keySystem.isPressed( keyCode: KeyCode.UP    ) )
-        }
+*/
+    }
 
         /**
             Checks and handles horizontal player movement.

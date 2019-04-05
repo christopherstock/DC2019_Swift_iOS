@@ -8,11 +8,11 @@
     class Workshop
     {
         /** The custom implementation of the SpriteKit scene. */
-        var scene     :Scene
-        /** The key system. */
-        var keySystem :KeySystem
+        var scene       :Scene
+        /** The touch system. */
+        var touchSystem :TouchSystem
         /** The game level instance. */
-        var level     :Level
+        var level       :Level
 
         /**
             Creates a new game workshop instance.
@@ -25,8 +25,8 @@
                 width:  viewHost.frame.width,
                 height: viewHost.frame.height
             )
-            keySystem = KeySystem()
-            level     = Level( scene: scene )
+            touchSystem = TouchSystem()
+            level       = Level( scene: scene )
 
             appendWorkshopView( to: viewHost )
 
@@ -57,7 +57,7 @@
         */
         func render() -> Void
         {
-            level.render( keySystem: keySystem )
+            level.render( touchSystem: touchSystem )
 
             scene.moveCameraTo( target: level.getPlayerPosition() );
 
